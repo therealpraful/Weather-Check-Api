@@ -1,0 +1,33 @@
+*{
+    font-family: 'Commissioner', sans-serif;
+}
+
+
+
+#city-input, #weather-output {
+    max-width: 400px;
+    margin: 0 auto;
+}
+  
+.banner {
+    color: #000000;
+    font-family: sans-serif;
+}
+
+li{
+    font-size: 20px;
+}
+
+.footer{
+
+   display: flex;
+   justify-content: center;
+
+
+}
+
+@media screen (max-width:770px){
+    #city-input{
+        max-width:300px;
+    }
+}
