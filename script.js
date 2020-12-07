@@ -53,10 +53,10 @@ showWeatherData = (weatherData) => {
 }
 else{
   document.getElementById("city-name").innerText = "City Not Found"
-  document.getElementById("weather-type").innerText = "----"
- document.getElementById("temp").innerText = "--"
- document.getElementById("min-temp").innerText = "--"
- document.getElementById("max-temp").innerText = "--"
+  document.getElementById("weather-type").innerText = "----";
+ document.getElementById("temp").innerText = "--";
+ document.getElementById("min-temp").innerText = "--";
+ document.getElementById("max-temp").innerText = "--";
 }
 }
 /* ------------------------ Using asnyc - await---------------  */
