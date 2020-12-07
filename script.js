@@ -1,4 +1,3 @@
-
 // API_KEY for maps api
 let API_KEY = "a8e71c9932b20c4ceb0aed183e6a83bb";
 
@@ -8,32 +7,35 @@ let API_KEY = "a8e71c9932b20c4ceb0aed183e6a83bb";
  * URL should look like this: 
  * https://api.openweathermap.org/data/2.5/weather?q=detroit&appid=a8e71c9932b20c4ceb0aed183e6a83bb&units=imperial
  */
-getWeatherData = (city) => {
-  const URL = "https://api.openweathermap.org/data/2.5/weather";
-  //HINT: Use template literals to create a url with input and an API key
-  const FULL_URL = `${URL}?q=${city}&appid=${API_KEY}&units=metric`
-  //CODE GOES HERE
-  const weatherPromise = fetch(FULL_URL);
-  return weatherPromise.then((response) => {
-    return response.json();
-  })
-}
+
+/* Using Promises */
+// getWeatherData = (city) => {
+//   const URL = "https://api.openweathermap.org/data/2.5/weather";
+//   //HINT: Use template literals to create a url with input and an API key
+//   const FULL_URL = `${URL}?q=${city}&appid=${API_KEY}&units=metric`
+//   //CODE GOES HERE
+//   const weatherPromise = fetch(FULL_URL);
+//   return weatherPromise.then((response) => {
+//     return response.json();
+//   })
+// }
 
 /**
  * Retrieve city input and get the weather data
  * Use the promise returned from getWeatherData()
  */
-searchCity = () => {
-  const city = document.getElementById('city-input').value;
-  // CODE GOES HERE
-  getWeatherData(city)
-  .then((response)=>{
-    console.log(response)
-      showWeatherData(response);
-  }).catch((error) => {
-      console.log(error);
-  })
-}
+
+// searchCity = () => {
+//   const city = document.getElementById('city-input').value;
+//   // CODE GOES HERE
+//   getWeatherData(city)
+//   .then((response)=>{
+//     console.log(response)
+//       showWeatherData(response);
+//   }).catch((error) => {
+//       console.log(error);
+//   })
+// }
 
 /**
  * Show the weather data in HTML
@@ -57,4 +59,26 @@ else{
  document.getElementById("max-temp").innerText = "--"
 }
 }
+/* ------------------------ Using asnyc - await---------------  */
 
+
+async function getWeatherData(city) {
+  const URL = "https://api.openweathermap.org/data/2.5/weather";
+  //HINT: Use template literals to create a url with input and an API key
+  const FULL_URL = `${URL}?q=${city}&appid=${API_KEY}&units=metric`
+  const weatherPromise =  await fetch(FULL_URL);
+  const weatherData = await weatherPromise.json();
+  return weatherData
+
+}
+
+
+searchCity = () => {
+  const city = document.getElementById('city-input').value;
+  // CODE GOES HERE
+  let data = getWeatherData(city);
+  data.then((response)=>{
+      console.log(response)
+      showWeatherData(response);
+  })
+}
